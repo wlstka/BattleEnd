@@ -11,6 +11,7 @@ class UTextBlock;
 class UEditableText;
 class UHorizontalBox;
 
+
 /**
  * 
  */
@@ -25,7 +26,7 @@ protected:
 
 	virtual void NativeConstruct() override;
 
-#pragma region LeftButtonClick 
+#pragma region LeftButton
 	UFUNCTION()
 	void OnEditorIPButtonClicked();
 
@@ -39,6 +40,17 @@ protected:
 	void OnUserCustomIPApplyButtonClicked();
 #pragma endregion
 
+
+#pragma region RightButton
+
+	UFUNCTION()
+	void OnUserNickNameApplyButtonClicked();
+
+
+
+#pragma endregion
+
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
 	FString DefaultEditorIP = TEXT("127.0.0.1");
 
@@ -48,7 +60,7 @@ protected:
 
 private:
 
-#pragma region LeftButtonClick 
+#pragma region LeftButton
 	
 	UPROPERTY(meta = (BindWidget))
 	UButton* Button_EditorIP;
@@ -65,17 +77,28 @@ private:
 	UPROPERTY(meta = (BindWidget))
 	UHorizontalBox* HorizontalBox_HideUserIP;
 
+
+#pragma endregion
+
+
+#pragma region RightButton
+
+	UPROPERTY(meta = (BindWidget))
+	UButton* Button_NickNameApply;
+
+#pragma endregion
+
+	UPROPERTY(meta = (BindWidget))
+	UEditableText* EditableTextBox_NickName;
+
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* TextBlock_UserNickName;
+
 	UPROPERTY(meta = (BindWidget))
 	UEditableText* EditableText_UserCustomIP;
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TextBlock_EnterRoomIP;
-
-
-#pragma endregion
-
-
-
 
 
 

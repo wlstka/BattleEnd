@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "UI/BETitleUserWidget.h"
@@ -6,6 +6,10 @@
 #include "Components/TextBlock.h"
 #include "Components/HorizontalBox.h"
 #include "Components/EditableText.h"
+
+#define LOCTEXT_NAMESPACE "WBP_TitleHUD"
+
+
 
 void UBETitleUserWidget::NativeConstruct()
 {
@@ -29,7 +33,16 @@ void UBETitleUserWidget::NativeConstruct()
 		Button_UserCustomIPApply->OnClicked.AddDynamic(this, &UBETitleUserWidget::OnUserCustomIPApplyButtonClicked);
 	}
 
+	if (Button_NickNameApply)
+	{
+		Button_NickNameApply->OnClicked.AddDynamic(this, &UBETitleUserWidget::OnUserNickNameApplyButtonClicked);
+	}
+
+
 }
+
+
+// 좌측 화면
 
 void UBETitleUserWidget::OnEditorIPButtonClicked()
 {
@@ -75,3 +88,21 @@ void UBETitleUserWidget::OnUserCustomIPApplyButtonClicked()
 		TextBlock_EnterRoomIP->SetText(UserCustomIPText);
 	}
 }
+
+
+// 우측 화면
+
+
+void UBETitleUserWidget::OnUserNickNameApplyButtonClicked()
+{
+
+	if (EditableTextBox_NickName && TextBlock_UserNickName)
+	{
+
+		FText NickNameText = EditableTextBox_NickName->GetText();
+		TextBlock_UserNickName->SetText(FText::Format(LOCTEXT("NickNameFormat", "현재 닉네임 : {0}"), NickNameText));
+	}
+
+}
+
+#undef LOCTEXT_NAMESPACE  //  네임스페이스 해제 (필수)
