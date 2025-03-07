@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/UserDefinedStruct.h"
-#include "BEUserInfoStruct.generated.h"
+#include "GameCharacters/BECharacterBase.h"
+#include "BEPlayerCharacter.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class BATTLEEND_API UBEUserInfoStruct : public UUserDefinedStruct
+class BATTLEEND_API ABEPlayerCharacter : public ABECharacterBase
 {
 	GENERATED_BODY()
 	
